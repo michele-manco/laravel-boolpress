@@ -8,7 +8,7 @@
 
 
         @forelse ($posts as $post)
-            <li>{{ $post->title}}</li>
+            <li> <a href="{{ route('blog.show', [ 'slug' => $post->slug])}}">{{ $post->title}}</a> </li>
 
         @empty
             <li>NOn ci sono post da mostrare</li>
