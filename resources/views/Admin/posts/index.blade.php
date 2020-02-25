@@ -4,7 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1>Lista Post x gestione Admin</h1>
+        <h1 class="pull-left">Lista Post x gestione Admin</h1>
+        <a class="btn btn-success pull-right" href="{{ route('admin.posts.create') }}">Crea un nuovo Post</a>
       </div>
     </div>
   </div>
@@ -25,12 +26,13 @@
               @forelse ($posts as $post)
 
                 <tr>
-                  <td>{{ $post->id}}</td>
-                  <td>{{ $post->title}}</td>
-                  <td>{{ $post->slug}}</td>
-                  <td>{{ $post->author}}</td>
+                  <td>{{ $post->id }}</td>
+                  <td>{{ $post->title }}</td>
+                  <td>{{ $post->slug }}</td>
+                  <td>{{ $post->author }}</td>
                   <td>
-                    <a class="btn btn-info" href="{{route('admin.posts.show', ['post'=> $post->id])}}">Visualizza</a>
+                    <a class="btn btn-info" href="{{ route('admin.posts.show', ['post'=> $post->id]) }}">Visualizza</a>
+                    <a class="btn btn-warning" href="{{ route('admin.posts.edit', ['post'=> $post->id]) }}">Modifica</a>
                   </td>
 
                 </tr>
