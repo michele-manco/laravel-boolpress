@@ -47,7 +47,17 @@ class PostController extends Controller
         $dati = $request->all();
         $post = new Post();
         $post ->fill($dati);
-        $post ->slug = Str::slug($dati['title']);
+        $slug_originale = Str::slug($dati['title']);
+        $slug = $slug_originale;
+        //verifico che nel db nn esista slug=!
+        $post_stesso_slug = Post::where('slug', $slug)->first();
+        $slug_trovati = 1;
+        while(!empty($post_stesso_slug)) {
+          $slug = $slug_originale .'-'. $slug_trovati;
+          $post_stesso_slug = Post::where('slug', $slug)->first();
+          $slug_trovati++;
+        }
+        $post->slug = $slug;
         $post ->save();
         return redirect()->route('admin.posts.index');
 
@@ -84,9 +94,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $dati = $request->all();
+        $post->update($dati);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -95,8 +108,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy( $id)
     {
-        //
+      $post = Post::find($id);
+      $post->delete();
+      return redirect()->route('admin.posts.index');
+
+
     }
 }

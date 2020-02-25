@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1 class"post-title">Modifica Post</h1>
+        <h2 class="post-title">Modifica Post</h2>
         <form class="" action="{{ route('admin.posts.update',['post' => $post->id]) }}" method="post">
           @csrf
           @method('PUT')
@@ -18,8 +18,7 @@
           </div>
           <div class="form-group">
                 <label for="content">Testo articolo</label>
-                <textarea class="form-control" id="content"placeholder="scrivi articolo" name="content" rows="8"
-                >{{$post->content }}"</textarea>
+                <textarea class="form-control" id="content" placeholder="scrivi articolo" name="content" rows="8">{{$post->content }}</textarea>
           </div>
           <div class="form-group">
                        <input type="submit" class="btn btn-primary" value="Aggiorna">

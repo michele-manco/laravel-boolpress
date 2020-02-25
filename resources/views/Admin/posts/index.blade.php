@@ -4,8 +4,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h1 class="pull-left">Lista Post x gestione Admin</h1>
-        <a class="btn btn-success pull-right" href="{{ route('admin.posts.create') }}">Crea un nuovo Post</a>
+        <h1 class="float-left">Lista Post x gestione Admin</h1>
+        <a class="btn btn-success float-right" href="{{ route('admin.posts.create') }}">Crea un nuovo Post</a>
       </div>
     </div>
   </div>
@@ -31,8 +31,14 @@
                   <td>{{ $post->slug }}</td>
                   <td>{{ $post->author }}</td>
                   <td>
-                    <a class="btn btn-info" href="{{ route('admin.posts.show', ['post'=> $post->id]) }}">Visualizza</a>
-                    <a class="btn btn-warning" href="{{ route('admin.posts.edit', ['post'=> $post->id]) }}">Modifica</a>
+                    <a class="btn btn-info float-left" href="{{ route('admin.posts.show', ['post'=> $post->id]) }}">Visualizza</a>
+                    <a class="btn btn-warning float-left" href="{{ route('admin.posts.edit', ['post'=> $post->id]) }}">Modifica</a>
+                    <form class="" action="{{ route('admin.posts.destroy', ['post'=> $post->id]) }}" method="post">
+                      @method('DELETE')
+                      @csrf
+                      <input class="btn btn-danger float-left" type="submit" name="" value="Cancella">
+
+                    </form>
                   </td>
 
                 </tr>
