@@ -6,6 +6,7 @@
       <div class="col-sm-12">
         <h1 class="post-title">{{ $post->title }}
          </h1>
+         <img src="{{ asset('storage/' . $post->cover_image) }}" alt="">
         <div class="post content">
           {{ $post->content }}
 
