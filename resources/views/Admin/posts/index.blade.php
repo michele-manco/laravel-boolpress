@@ -33,7 +33,7 @@
                   <td>
                     <a class="btn btn-info float-left" href="{{ route('admin.posts.show', ['post'=> $post->id]) }}">Visualizza</a>
                     <a class="btn btn-warning float-left" href="{{ route('admin.posts.edit', ['post'=> $post->id]) }}">Modifica</a>
-                    <form class="" action="{{ route('admin.posts.destroy', ['post'=> $post->id]) }}" method="post">
+                    <form class="" action="{{route('admin.posts.destroy', ['post'=> $post->id]) }}" method="post">
                       @method('DELETE')
                       @csrf
                       <input class="btn btn-danger float-left" type="submit" name="" value="Cancella">
