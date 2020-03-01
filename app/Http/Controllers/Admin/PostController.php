@@ -47,13 +47,18 @@ class PostController extends Controller
     {
         $dati = $request->all();
 
-        $cover_image = $dati['cover_image'];
-        $cover_image_path= Storage::put('uploads', $cover_image);
 
 
         $post = new Post();
-        $post->cover_image = $cover_image_path;
         $post ->fill($dati);
+
+        if (!empty($dati['cover_image_file'])) {
+          $cover_image = $dati['cover_image_file'];
+          $cover_image_path = Storage::put('public.uploads', $cover_image);
+          $post->cover_image = $cover_image_path;
+        }
+
+
         $slug_originale = Str::slug($dati['title']);
         $slug = $slug_originale;
         //verifico che nel db nn esista slug=!
@@ -105,6 +110,11 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $dati = $request->all();
+        if (!empty($dati['cover_image_file'])) {
+          $cover_image = $dati['cover_image_file'];
+          $cover_image_path= Storage::put('uploads', $cover_image);
+          $dati['cover_image'] = $cover_image_path;
+        }
         $post->update($dati);
         return redirect()->route('admin.posts.index');
     }
