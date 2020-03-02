@@ -54,7 +54,7 @@ class PostController extends Controller
 
         if (!empty($dati['cover_image_file'])) {
           $cover_image = $dati['cover_image_file'];
-          $cover_image_path = Storage::put('public.uploads', $cover_image);
+          $cover_image_path = Storage::put('app/public/uploads', $cover_image);
           $post->cover_image = $cover_image_path;
         }
 
@@ -112,7 +112,7 @@ class PostController extends Controller
         $dati = $request->all();
         if (!empty($dati['cover_image_file'])) {
           $cover_image = $dati['cover_image_file'];
-          $cover_image_path= Storage::put('uploads', $cover_image);
+          $cover_image_path= Storage::put('app/public/uploads', $cover_image);
           $dati['cover_image'] = $cover_image_path;
         }
         $post->update($dati);
@@ -128,6 +128,8 @@ class PostController extends Controller
     public function destroy( $id)
     {
       $post = Post::find($id);
+      $post_image = $post->cover_image;
+      Storage::delete($post_image);
       $post->delete();
       return redirect()->route('admin.posts.index');
 
