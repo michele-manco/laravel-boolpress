@@ -8,5 +8,11 @@
 @import '~bootstrap/scss/bootstrap';
 
 body{
-  background-color: red;
+  background-color: lavender;
 };
+#welcome{
+  color: red;
+  padding-top: 40px;
+  font-size: 40px;
+  font-weight: bold;
+}

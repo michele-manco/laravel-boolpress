@@ -3,13 +3,13 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-          <h1 id="welcome" class="text-center">Benvenuti in Boolpress</h1>
+        <h1>Grazie per il tuo Msg</h1>
+
+        <p>Ti risponderemo al piu' presto!</p>
+
 
       </div>
-
     </div>
-
   </div>
-
 
 @endsection

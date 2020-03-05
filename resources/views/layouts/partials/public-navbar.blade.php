@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-lavender shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -26,7 +26,7 @@
                     <a class="nav-link" href="#">Cosa Facciamo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contatti</a>
+                    <a class="nav-link" href="{{ route('contatti.show') }}">Contatti</a>
                 </li>
                 @auth
                   <li class="nav-item dropdown">

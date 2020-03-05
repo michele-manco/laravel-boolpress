@@ -6,7 +6,7 @@
       <div class="col-sm-12">
         <h1 class="post-title">{{ $post->title }}
          </h1>
-         <img src="{{$post->cover_image ? asset('storage/' . $post->cover_image) : asset('storage/uploads/poster-not.jpg') }}" alt="{{ $post->title }} - immagine di copertina">
+         <img src="{{$post->cover_image ? asset('storage/' . $post->cover_image) : asset('storage/app/public/uploads/poster-not.jpg') }}" alt="{{ $post->title }} - immagine di copertina">
         <div class="post content">
           {{ $post->content }}
 

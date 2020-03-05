@@ -110,9 +110,18 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $dati = $request->all();
+
+
         if (!empty($dati['cover_image_file'])) {
+          // se post ha già img di cover la cancello prima di collegare la nuova
+          if (!empty($post->cover_image)) {
+            // cancello la precedente
+            Storage::delete($post->cover_image);
+          }
+          // carico la nuova img
           $cover_image = $dati['cover_image_file'];
           $cover_image_path= Storage::put('app/public/uploads', $cover_image);
+          // assegnò indirizzo della new img al post
           $dati['cover_image'] = $cover_image_path;
         }
         $post->update($dati);
