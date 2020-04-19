@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "minimist": "^1.2.5"
+        "acorn": "^7.1.1",
+        "minimist": "^1.2.5",
+        "symfony": "0.0.1"
     }
 }
